@@ -1,0 +1,26 @@
+*.sqlite*
+# Ignore Laravel environment file
+.env
+.env.example
+
+# Laravel specific files
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.idea
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.example
+/.vscode
+/database/*.sqlite
+/database/*.sqlite3
