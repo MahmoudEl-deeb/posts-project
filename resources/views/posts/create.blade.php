@@ -6,7 +6,7 @@
             </div>
 
             <div class="px-6 py-4">
-                <form method="POST" action="{{ route('posts.store') }}">
+                <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data"" >
                     @csrf
                     <!-- Title Input -->
                     <div class="mb-4">
@@ -43,7 +43,15 @@
                             @endforeach
                         @endif
                     </div>
-
+                    <div class="mb-4">
+                    <label for="image">Upload Image:</label>
+                    <input type="file" name="image" id="image">
+                    @if ($errors->has('image'))
+                            @foreach ($errors->get('image') as $error)
+                                <p class="text-red-500 text-sm mt-1">{{ $error }}</p>
+                            @endforeach
+                        @endif
+                </div> 
                     <!-- Post Creator Select -->
                     <div class="mb-6">
                         <label for="creator" class="block text-sm font-medium text-gray-700 mb-1">Post Creator</label>

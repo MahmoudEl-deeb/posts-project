@@ -6,7 +6,7 @@
             </div>
 
             <div class="px-6 py-4">
-            <form method="POST" action="{{ route('posts.update', $post->id) }}">
+            <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
 
@@ -45,6 +45,16 @@
                         
                         @endif
                     </div>
+                </div>
+                <div class="mb-4">
+                <label for="image">Upload Image:</label>
+                <input type="file" name="image" id="image">
+                @if ($errors->has('image'))
+                            @foreach ($errors->get('image') as $error)
+                                <p class="text-red-500 text-sm mt-1">{{ $error }}</p>
+                            @endforeach
+                        @endif
+            </div> 
 
                     <!-- Post Creator Select -->
                     <div class="mb-6">

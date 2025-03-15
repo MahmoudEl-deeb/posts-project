@@ -35,6 +35,10 @@ class PostController extends Controller
     $post = new Post();
     $post->title = $request->input('title');
     $post->description = $request->input('description');
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('post-images', 'public');
+        $post->image = $path;
+    }
     $post->user_id = $request->input('post_creator'); // Map post_creator to user_id
     $post->save();
     
@@ -52,17 +56,14 @@ class PostController extends Controller
     public function update(StorePostRequest $request, $id)
 {
     $post = Post::find($id);
-    if (!$post) {
-        return to_route('posts.index');
-    }
     
     $post->title = $request->input('title');
     $post->description = $request->input('description');
-    
-    // Only update user relationship if post_creator is provided
-    if ($request->has('post_creator')) {
-        $post->user_id = $request->input('post_creator');
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('post-images', 'public');
+        $post->image = $path;
     }
+    
     
     $post->save();
     return to_route('posts.index');

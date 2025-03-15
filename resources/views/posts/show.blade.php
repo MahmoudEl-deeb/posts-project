@@ -14,6 +14,10 @@
                     <p class="text-gray-600"></p>
                 </div>
             </div>
+            @if($post->image)
+            <div><img src="{{ Storage::url($post->image) }}" alt="Post Image" width="200" class="m-3"></td></div>
+            @else <p class="px-4 py-2 whitespace-nowrap text-gray-700">No Image</p>
+        @endif
         </div>
 
         <!-- Post Creator Info Card -->
@@ -31,6 +35,7 @@
                 <div>
                     <h3 class="text-lg font-medium text-gray-800">Created At :- {{ $post->created_at}} <span class="font-normal"></span></h3>
                 </div>
+               
             </div>
         </div>
         <!-- Comments Section -->

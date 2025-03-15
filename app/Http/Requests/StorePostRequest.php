@@ -14,7 +14,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => ['required', 'min:3', Rule::unique('posts')->ignore($this->route('id')),],
             'description' => ['required', 'min:10'],
-            'post_creator' => ['required', 'exists:users,id'], // Changed from user_id to post_creator
+            
+            'image' => ['nullable', 'image', 'mimes:jpg,png', 'max:2048']
         ];
     }
 }

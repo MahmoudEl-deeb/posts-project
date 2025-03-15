@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -32,5 +33,27 @@ class Post extends Model
                 'source' => 'title'
             ]
         ];
+    }
+    public function setImageAttribute($value)
+    {
+       
+        if ($this->attributes['image'] ?? false) {
+            Storage::delete($this->attributes['image']);
+        }
+
+  
+        $this->attributes['image'] = $value;
+    }
+
+    
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($post) {
+            if ($post->image) {
+                Storage::delete($post->image);
+            }
+        });
     }
 }
