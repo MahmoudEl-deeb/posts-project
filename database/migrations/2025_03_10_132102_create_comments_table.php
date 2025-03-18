@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->text('body');
             $table->morphs('commentable'); // Polymorphic relation
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Comment author
+            $table->foreignId('user_id')->Nullable()->constrained()->onDelete('cascade'); // Comment author
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-<x-layout title="Create New Post">
+<x-navbar title="Create New Post">
     <div class="max-w-3xl mx-auto">
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">
@@ -83,4 +83,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-navbar>

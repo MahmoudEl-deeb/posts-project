@@ -1,4 +1,4 @@
-<x-layout title="Show Post">
+<x-navbar title="Show Post">
     <div class="max-w-3xl mx-auto space-y-6">
 
         <div class="bg-white rounded border border-gray-200">
@@ -83,5 +83,5 @@
             </a>
         </div>
     </div>
-</x-layout>
+</x-navbar>
 

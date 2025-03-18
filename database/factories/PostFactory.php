@@ -13,7 +13,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(6),
+            'title' => $this->faker->sentence(2),
             'description' => $this->faker->paragraph(4),
             'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
             'created_at' => now(),

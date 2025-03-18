@@ -7,7 +7,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Responses\PostResponse;
+use App\Models\Post;
 
 
 Route::get('/', function () {
@@ -29,16 +30,36 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+    
+    
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-    Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+    // Route::get('/posts/{id}', action: [PostController::class, 'show'])->name('posts.show');
     Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::patch('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
     Route::get('/posts/{id}/confirm-delete', [PostController::class, 'confirmDelete'])->name('posts.delete');
     Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    // Route::get('/posts/{post}', function (Post $post) {
+    //     return new PostResponse($post);
+
+    // });
+    // Route::get('/posts/{id}', function ($id) {
+    //     $post = Post::with('user')->findOrFail($id); // Fetch post with user data
+    
+    //     return response()->json([
+    //         'title' => $post->title,
+    //         'description' => $post->description,
+    //         'username' => $post->user->name,
+    //         'useremail' => $post->user->email,
+    //     ]);
+    // });
+
+
 });
 
 require __DIR__ . '/auth.php';

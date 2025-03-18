@@ -1,4 +1,4 @@
-<x-layout title="Create New Post">
+<x-navbar title="Create New Post">
     <div class="max-w-3xl mx-auto">
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">
@@ -15,6 +15,7 @@
                             name="title"
                             type="text"
                             id="title"
+                            value="{{ old('title') }}"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 py-2 px-3 border"
                         >
                         @if ($errors->has('title'))
@@ -36,7 +37,7 @@
                             id="description"
                             rows="5"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 py-2 px-3 border"
-                        ></textarea>
+                        >{{old('description')}}</textarea>
                         @if ($errors->has('description'))
                             @foreach ($errors->get('description') as $error)
                                 <p class="text-red-500 text-sm mt-1">{{ $error }}</p>
@@ -79,4 +80,4 @@
             </div>
         </div>
     </div>
-</x-layout >
+</x-navbar>

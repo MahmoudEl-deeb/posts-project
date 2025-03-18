@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
     use Sluggable; // Make sure this trait is used
 
-    protected $fillable = ['title', 'description', 'user_id', 'slug'];
+    protected $fillable = ['title', 'description', 'user_id', 'slug', 'image'];
     
     public function user(){
         return $this->belongsTo(User::class);
